@@ -1,56 +1,128 @@
-# Welcome to your Expo app 👋
+<p align="center">
+  <img src="assets/images/logo.png" alt="Logótipo do Mali" width="80">
+</p>
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<h1 align="center">Mali</h1>
 
-## Get started
+<p align="center">Controlo de saldo durante as compras.</p>
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Sobre
 
-2. Start the app
+O Mali é uma aplicação móvel para quem precisa de saber, a cada momento, quanto ainda pode gastar. Antes de começar as compras define-se um saldo. À medida que os produtos são adicionados, o valor é descontado, a aplicação indica se ainda é possível comprar e, no fim, mostra o total gasto. A compra pode ser guardada num histórico, que serve para consultar o que foi comprado no mês anterior e evitar esquecimentos.
 
-   ```bash
-   npx expo start
-   ```
+O nome vem de *mali*, que significa dinheiro em changana.
 
-In the output, you'll find options to open the app in a
+## Capturas de ecrã
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<!-- Substituir os ficheiros em docs/screenshots por capturas reais, mantendo os nomes. -->
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/inicio.png" alt="Ecrã inicial" width="220"><br><sub>Início</sub></td>
+    <td align="center"><img src="docs/screenshots/compras.png" alt="Ecrã de compras" width="220"><br><sub>Compras</sub></td>
+    <td align="center"><img src="docs/screenshots/historico.png" alt="Histórico" width="220"><br><sub>Histórico</sub></td>
+    <td align="center"><img src="docs/screenshots/modo-escuro.png" alt="Modo escuro" width="220"><br><sub>Modo escuro</sub></td>
+  </tr>
+</table>
 
-## Get a fresh project
+## Funcionalidades
 
-When you're ready, run:
+- Saldo inicial, com valores rápidos de 500, 1000, 2000 e 5000 MT.
+- Desconto automático a cada produto e bloqueio quando o produto não cabe no saldo.
+- Indicação visual quando o saldo está a acabar.
+- Pesquisa de produtos com sugestões, incluindo nomes usados em Moçambique, como xima, mancarra ou matapa.
+- Preços sugeridos por produto, a partir de valores de referência e dos últimos preços pagos pelo utilizador.
+- Quantidade com botões de incremento, sem necessidade de abrir o teclado.
+- Finalização da compra e histórico consultável, com os produtos, o saldo inicial e o que sobrou.
+- Funcionamento sem ligação à internet. Os dados ficam guardados no dispositivo.
+- Tema claro e escuro, de acordo com a definição do sistema.
 
-```bash
-npm run reset-project
+## Tecnologias
+
+| Área | Tecnologia |
+| --- | --- |
+| Plataforma | Expo (SDK 57) e React Native 0.86 |
+| Linguagem | TypeScript |
+| Navegação | Expo Router |
+| Animações | React Native Reanimated 4 |
+| Armazenamento local | AsyncStorage |
+| Tipografia | Inter, incluída na aplicação |
+| Ícones | Feather, via `@expo/vector-icons` |
+
+## Estrutura do projeto
+
+```
+mali/
+├── app/
+│   ├── _layout.tsx            Raiz da aplicação e carregamento de fontes
+│   └── (tabs)/
+│       ├── _layout.tsx        Barra de separadores
+│       ├── index.tsx          Ecrã de compras
+│       └── historico.tsx      Histórico de compras
+├── src/
+│   ├── store.tsx              Estado, regras de negócio e persistência
+│   ├── AddProduct.tsx         Formulário, autocomplete e preços sugeridos
+│   ├── Hero.tsx               Cartão do saldo
+│   ├── ui.tsx                 Componentes comuns
+│   ├── theme.ts               Cores e fontes
+│   ├── format.ts              Formatação de valores e normalização de texto
+│   └── data.ts                Lista de produtos e preços de referência
+├── assets/                    Ícones, logótipo e imagens
+├── docs/screenshots/          Capturas de ecrã usadas neste README
+├── app.json
+└── eas.json
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Como executar
 
-### Other setup steps
+Requisitos: Node.js (versão LTS), npm e um telemóvel ou emulador Android.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+```bash
+git clone https://github.com/<utilizador>/mali.git
+cd mali
+npm install
+npx expo start
+```
 
-## Learn more
+Para compilar e abrir diretamente num dispositivo ou emulador Android ligado:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm run android
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Produtos e preços de referência
 
-## Join the community
+A lista de produtos e os preços sugeridos estão em `src/data.ts`:
 
-Join our community of developers creating universal apps.
+- `PROD` contém os nomes dos produtos, incluindo designações locais entre parênteses.
+- `PRC` associa o nome de um produto a uma lista de preços típicos, em meticais, por unidade, quilograma ou litro.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Os preços de referência são aproximados e servem apenas como ponto de partida. Variam por loja, cidade e época do ano. Os preços que o utilizador regista têm prioridade sobre os de referência e passam a ser sugeridos primeiro.
+
+## Gerar o APK
+
+O projeto usa o EAS Build. O perfil `preview` do `eas.json` produz um APK instalável diretamente no telemóvel.
+
+```bash
+npm install -g eas-cli
+eas login
+eas build -p android --profile preview
+```
+
+A configuração Android do `app.json` limita a compilação à arquitetura `arm64-v8a`, o que reduz o tamanho do ficheiro e exclui telemóveis de 32 bits. Para os incluir, acrescentar `armeabi-v7a` à propriedade `buildArchs` do plugin `expo-build-properties`.
+
+## Estado do projeto
+
+Em desenvolvimento. A publicação na Google Play está prevista.
+
+## Autor
+
+Ferdinaldo Pelembe, estudante de Engenharia Informática.
+
+Contacto: `<email ou perfil>`
+
+## Licença
+
+Distribuído sob a licença MIT. Consultar o ficheiro [LICENSE](LICENSE).
