@@ -20,10 +20,10 @@ O nome vem de *mali*, que significa dinheiro em changana.
 
 <table>
   <tr>
-    <td align="center"><img src="docs/screenshots/inicio.png" alt="Ecrã inicial" width="220"><br><sub>Início</sub></td>
-    <td align="center"><img src="docs/screenshots/compras.png" alt="Ecrã de compras" width="220"><br><sub>Compras</sub></td>
-    <td align="center"><img src="docs/screenshots/historico.png" alt="Histórico" width="220"><br><sub>Histórico</sub></td>
-    <td align="center"><img src="docs/screenshots/modo-escuro.png" alt="Modo escuro" width="220"><br><sub>Modo escuro</sub></td>
+    <td align="center"><img src="docs/screenshots/inicio.jpg" alt="Ecrã inicial" width="220"><br><sub>Início</sub></td>
+    <td align="center"><img src="docs/screenshots/compras.jpg" alt="Ecrã de compras" width="220"><br><sub>Compras</sub></td>
+    <td align="center"><img src="docs/screenshots/historico.jpg" alt="Histórico" width="220"><br><sub>Histórico</sub></td>
+    <td align="center"><img src="docs/screenshots/modo-escuro.jpg" alt="Modo escuro" width="220"><br><sub>Modo escuro</sub></td>
   </tr>
 </table>
 
